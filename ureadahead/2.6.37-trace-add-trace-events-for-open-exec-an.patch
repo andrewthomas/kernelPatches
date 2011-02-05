@@ -1,17 +1,17 @@
 diff --git a/fs/exec.c b/fs/exec.c
-index 6d2b6f9..f164c7e 100644
+index c62efcb..d4261c7 100644
 --- a/fs/exec.c
 +++ b/fs/exec.c
-@@ -55,6 +55,8 @@
- #include <linux/fs_struct.h>
+@@ -56,6 +56,8 @@
  #include <linux/pipe_fs_i.h>
+ #include <linux/oom.h>
  
 +#include <trace/events/fs.h>
 +
  #include <asm/uaccess.h>
  #include <asm/mmu_context.h>
  #include <asm/tlb.h>
-@@ -700,6 +702,8 @@ struct file *open_exec(const char *name)
+@@ -737,6 +739,8 @@ struct file *open_exec(const char *name)
  
  	fsnotify_open(file);
  
@@ -21,7 +21,7 @@ index 6d2b6f9..f164c7e 100644
  	if (err)
  		goto exit;
 diff --git a/fs/open.c b/fs/open.c
-index d74e198..ddd5fbc 100644
+index 4197b9e..42913db 100644
 --- a/fs/open.c
 +++ b/fs/open.c
 @@ -33,6 +33,9 @@
